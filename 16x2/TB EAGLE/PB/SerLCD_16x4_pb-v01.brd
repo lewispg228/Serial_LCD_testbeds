@@ -182,6 +182,9 @@
 <text x="72.644" y="6.604" size="1.27" layer="21" font="vector" ratio="15">FAIL</text>
 <text x="44.069" y="44.45" size="0.8128" layer="22" font="vector" ratio="15" rot="MR0">10K</text>
 <text x="39.116" y="44.45" size="0.8128" layer="22" font="vector" ratio="15" rot="MR0">10K</text>
+<text x="2.54" y="132.08" size="0.8128" layer="21" font="vector" ratio="15">AVR ISP</text>
+<text x="15.24" y="64.77" size="0.8128" layer="21" font="vector" ratio="15" rot="R90">Serial upload</text>
+<text x="11.684" y="74.549" size="0.8128" layer="21" font="vector" ratio="15">DTR</text>
 </plain>
 <libraries>
 <library name="SparkFun">
