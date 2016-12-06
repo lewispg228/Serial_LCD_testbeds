@@ -185,6 +185,9 @@
 <wire x1="58.42" y1="88.9" x2="58.42" y2="90.678" width="0.2032" layer="20"/>
 <wire x1="58.42" y1="90.678" x2="20.32" y2="90.678" width="0.2032" layer="20"/>
 <text x="35.56" y="93.98" size="2.54" layer="21" font="vector" ratio="15">PF</text>
+<text x="27.94" y="60.96" size="3.81" layer="20" font="vector" ratio="15" rot="R45">ROUTE OUT</text>
+<text x="29.21" y="39.37" size="3.81" layer="20" font="vector" ratio="15" rot="R45">ROUTE OUT</text>
+<text x="30.48" y="15.24" size="3.81" layer="20" font="vector" ratio="15" rot="R45">ROUTE OUT</text>
 </plain>
 <libraries>
 <library name="SparkFun">
