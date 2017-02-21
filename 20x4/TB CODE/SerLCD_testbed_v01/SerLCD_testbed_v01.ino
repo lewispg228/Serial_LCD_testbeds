@@ -5,6 +5,29 @@
   Contributions by NES November 15th, 2016
 
   Select Mega2560 from the boards list
+
+  Test procedure:
+  
+* USER PRESS "PRETEST & POWER" BUTTON
+* pretest for shorts to GND on VIN and 3.3V rails
+* power up with V2 (jumpered to RAW 7V input source)
+* power up V1 (used to power the programming lines switch IC)
+* 
+* USER ENGAGE PROGRAMMING (via batch file or stand alone Pi_grammer)
+* Load bootloader/firmware combined hex
+* 
+* USER VERIFY SPLASH SCREEN
+* 
+* USER PRESS "TEST" BUTTON
+* Test voltage output is 3.3V
+* Set contrast via serial
+* Test Serial
+* Test I2C
+* Test SPI
+* Test backlight(s) via Serial
+* Leave LCD in ideal user state (contrast set, backlight on)
+* 
+* 
 */
 #define STATUS_LED 13
 #define PGM_SWITCH_EN 30
