@@ -33,6 +33,7 @@
 #define PT_CTRL_PIN 3
 #define PT_READ_PIN A6
 #define DTR_FJ 2
+#define CS_PIN 53
 
 #define DISPLAY_ADDRESS1 0x72 //This is the default address of the OpenLCD
 
@@ -40,6 +41,8 @@
 FlyingJalapeno FJ(STATUS_LED); //Blink status msgs on pin 13
 
 #include <Wire.h>
+
+#include <SPI.h>
 
 #include <CapacitiveSensor.h>
 CapacitiveSensor cs_1 = CapacitiveSensor(47, 45);
@@ -163,21 +166,11 @@ void loop()
 
 void test()
 {
-  // add in your test code here
     test_VCC();
-
     set_contrast_via_serial();
-    
-
-    Serial1.write('|'); //Setting character
-    Serial1.write('-'); //Clear display
-    Serial1.print("01234567890123456789"); // fill all rows.
-    Serial1.print("01234567890123456789");
-    Serial1.print("01234567890123456789");
-    Serial1.print("01234567890123456789");
-
-    ping_I2C();
-    
+    serial_test();
+    I2C_test();
+    if(failures == 0) SPI_test();
 }
 
 // This is an example of testing a 3.3V output from the board sent to A2.
@@ -268,6 +261,14 @@ void set_contrast_via_serial()
   delay(500);
 }
 
+void serial_test()
+{
+  Serial1.write('|'); //Setting character
+  Serial1.write('-'); //Clear display
+  Serial1.print("Serial              ");
+  delay(500);
+}
+
 boolean ping_I2C()
 {
   #include <Wire.h>
@@ -275,5 +276,52 @@ boolean ping_I2C()
   boolean result = FJ.verify_i2c_device(DISPLAY_ADDRESS1);
   if(result == false) failures++;
   return result;
+}
+
+void I2C_test()
+{
+  FJ.enablePCA();
+  if(ping_I2C() == true)
+  {
+    Wire.beginTransmission(DISPLAY_ADDRESS1); // transmit to device #1
+    Wire.print("I2C                 ");
+    Wire.endTransmission(); //Stop I2C transmission
+  }
+  else
+  {
+    Serial.print("I2C ping FAILURE");
+  }
+  Wire.end();
+  FJ.disablePCA();
+}
+
+void SPI_test()
+{
+  pinMode(CS_PIN, OUTPUT);
+  digitalWrite(CS_PIN, HIGH); //By default, don't be selecting OpenLCD
+  
+  SPI.begin(); //Start SPI communication
+  //SPI.beginTransaction(SPISettings(100000, MSBFIRST, SPI_MODE0));
+  SPI.setClockDivider(SPI_CLOCK_DIV64); //Slow down the master a bit
+
+    //Send the clear display command to the display - this forces the cursor to return to the beginning of the display
+  //digitalWrite(CS_PIN, LOW); //Drive the CS pin low to select OpenLCD
+  //SPI.transfer('|'); //Put LCD into setting mode
+  //SPI.transfer('-'); //Send clear display command
+  //digitalWrite(CS_PIN, HIGH); //Release the CS pin to de-select OpenLCD
+
+  char tempString[50]; //Needs to be large enough to hold the entire string with up to 5 digits
+  sprintf(tempString, "SPI                 ");
+  spiSendString(tempString);
+
+}
+
+//Sends a string over SPI
+void spiSendString(char* data)
+{
+  digitalWrite(CS_PIN, LOW); //Drive the CS pin low to select OpenLCD
+  for(byte x = 0 ; data[x] != '\0' ; x++) //Send chars until we hit the end of the string
+    SPI.transfer(data[x]);
+  digitalWrite(CS_PIN, HIGH); //Release the CS pin to de-select OpenLCD
 }
 
