@@ -34,8 +34,12 @@
 #define PT_READ_PIN A6
 #define DTR_FJ 2
 
+#define DISPLAY_ADDRESS1 0x72 //This is the default address of the OpenLCD
+
 #include <FlyingJalapeno.h>
 FlyingJalapeno FJ(STATUS_LED); //Blink status msgs on pin 13
+
+#include <Wire.h>
 
 #include <CapacitiveSensor.h>
 CapacitiveSensor cs_1 = CapacitiveSensor(47, 45);
@@ -142,7 +146,7 @@ void loop()
     digitalWrite(LED_PASS, LOW);
     digitalWrite(LED_FAIL, LOW);
 
-    test_VCC();
+    
     //contrast_test();
     test(); //Run main test code
 
@@ -160,14 +164,10 @@ void loop()
 void test()
 {
   // add in your test code here
+    test_VCC();
 
-    Serial1.begin(9600);
-
-    //Send contrast setting
-    Serial1.write('|'); //Put LCD into setting mode
-    Serial1.write(24); //Send contrast command (24 aka "ctrl-x")
-    Serial1.write(50); // "50" contrast setting (0-255) seems to look perfect on my test jig in my office.
-    delay(500);
+    set_contrast_via_serial();
+    
 
     Serial1.write('|'); //Setting character
     Serial1.write('-'); //Clear display
@@ -175,6 +175,8 @@ void test()
     Serial1.print("01234567890123456789");
     Serial1.print("01234567890123456789");
     Serial1.print("01234567890123456789");
+
+    ping_I2C();
     
 }
 
@@ -253,5 +255,25 @@ void contrast_test()
     delay(500); //Hang out for a bit
   }
   
+}
+
+void set_contrast_via_serial()
+{
+  Serial1.begin(9600);
+  
+  //Send contrast setting
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(24); //Send contrast command (24 aka "ctrl-x")
+  Serial1.write(50); // "50" contrast setting (0-255) seems to look perfect on my test jig in my office.
+  delay(500);
+}
+
+boolean ping_I2C()
+{
+  #include <Wire.h>
+  Wire.begin();
+  boolean result = FJ.verify_i2c_device(DISPLAY_ADDRESS1);
+  if(result == false) failures++;
+  return result;
 }
 
