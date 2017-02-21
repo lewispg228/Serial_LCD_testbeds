@@ -1,8 +1,7 @@
 /*
-  This example shows how to run a normal test procedure
-
-  Pete Lewis, started on 11/3/2016
-  Contributions by NES November 15th, 2016
+  SerLCD testbed code.
+  Flying Jalapeno (V1:5V,  V2: RAW (7V))
+  2 capsense pads: Pretest & Power, TEST
 
   Select Mega2560 from the boards list
 
@@ -166,13 +165,13 @@ void test()
 
     //Send contrast setting
     Serial1.write('|'); //Put LCD into setting mode
-    Serial1.write(24); //Send contrast command
-    Serial1.write(50);
+    Serial1.write(24); //Send contrast command (24 aka "ctrl-x")
+    Serial1.write(50); // "50" contrast setting (0-255) seems to look perfect on my test jig in my office.
     delay(500);
 
     Serial1.write('|'); //Setting character
     Serial1.write('-'); //Clear display
-    Serial1.print("01234567890123456789");
+    Serial1.print("01234567890123456789"); // fill all rows.
     Serial1.print("01234567890123456789");
     Serial1.print("01234567890123456789");
     Serial1.print("01234567890123456789");
