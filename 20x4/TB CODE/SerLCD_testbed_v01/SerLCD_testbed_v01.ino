@@ -35,7 +35,7 @@
 #define DTR_FJ 2
 #define CS_PIN 53
 
-#define DISPLAY_ADDRESS1 0x72 //This is the default address of the OpenLCD
+#define DISPLAY_ADDRESS1 0x72 //This is the default address of the Serial1
 
 #include <FlyingJalapeno.h>
 FlyingJalapeno FJ(STATUS_LED); //Blink status msgs on pin 13
@@ -171,6 +171,7 @@ void test()
     serial_test();
     I2C_test();
     if(failures == 0) SPI_test();
+    if(failures == 0) backlight_test();
 }
 
 // This is an example of testing a 3.3V output from the board sent to A2.
@@ -298,17 +299,17 @@ void I2C_test()
 void SPI_test()
 {
   pinMode(CS_PIN, OUTPUT);
-  digitalWrite(CS_PIN, HIGH); //By default, don't be selecting OpenLCD
+  digitalWrite(CS_PIN, HIGH); //By default, don't be selecting Serial1
   
   SPI.begin(); //Start SPI communication
   //SPI.beginTransaction(SPISettings(100000, MSBFIRST, SPI_MODE0));
   SPI.setClockDivider(SPI_CLOCK_DIV64); //Slow down the master a bit
 
     //Send the clear display command to the display - this forces the cursor to return to the beginning of the display
-  //digitalWrite(CS_PIN, LOW); //Drive the CS pin low to select OpenLCD
+  //digitalWrite(CS_PIN, LOW); //Drive the CS pin low to select Serial1
   //SPI.transfer('|'); //Put LCD into setting mode
   //SPI.transfer('-'); //Send clear display command
-  //digitalWrite(CS_PIN, HIGH); //Release the CS pin to de-select OpenLCD
+  //digitalWrite(CS_PIN, HIGH); //Release the CS pin to de-select Serial1
 
   char tempString[50]; //Needs to be large enough to hold the entire string with up to 5 digits
   sprintf(tempString, "SPI                 ");
@@ -319,9 +320,49 @@ void SPI_test()
 //Sends a string over SPI
 void spiSendString(char* data)
 {
-  digitalWrite(CS_PIN, LOW); //Drive the CS pin low to select OpenLCD
+  digitalWrite(CS_PIN, LOW); //Drive the CS pin low to select Serial1
   for(byte x = 0 ; data[x] != '\0' ; x++) //Send chars until we hit the end of the string
     SPI.transfer(data[x]);
-  digitalWrite(CS_PIN, HIGH); //Release the CS pin to de-select OpenLCD
+  digitalWrite(CS_PIN, HIGH); //Release the CS pin to de-select Serial1
+}
+
+void backlight_test()
+{
+
+  //Serial1.begin(9600); //Begin communication with Serial1
+
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(158 + 0); //Set green backlight amount to 0%
+  delay(100);
+
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(188 + 0); //Set blue backlight amount to 0%
+  delay(100);
+
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(128); //Set white/red backlight amount to 0%
+  delay(100);
+
+  ///////////////////////RED
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(128 + 29); //Set white/red backlight amount to 100%
+  delay(2000);
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(128); //Set white/red backlight amount to 0%
+  
+  ///////////////////////GREEN
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(158 + 29); //Set green backlight amount to 100%
+  delay(2000);
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(158 + 0); //Set green backlight amount to 0%
+
+  ///////////////////////BLUE
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(188 + 29); //Set blue backlight amount to 100%
+  delay(2000);
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(188 + 0); //Set blue backlight amount to 0%
+  
 }
 
