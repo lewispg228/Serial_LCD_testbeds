@@ -204,8 +204,13 @@ void power_down()
 {
   Serial.println("powering down target");
 
-  FJ.setV1(false, 5); //Turn off power supply 1, but leave voltage selection at 5V
-  FJ.setV2(false, 4.2); //Turn off power supply 1, but leave voltage selection at 4.2V
+  Serial1.end();
+  Wire.end();
+  SPI.end();
+  digitalWrite(CS_PIN, LOW);
+
+  FJ.disableRegulator1();
+  FJ.disableRegulator2();
 
   digitalWrite(PGM_SWITCH_EN, LOW); // DISable switch for programming.
   pinMode(PGM_SWITCH_EN, INPUT);
