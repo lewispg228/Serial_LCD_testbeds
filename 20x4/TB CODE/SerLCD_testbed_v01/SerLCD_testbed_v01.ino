@@ -171,7 +171,7 @@ void test()
     serial_test();
     I2C_test();
     if(failures == 0) SPI_test();
-    if(failures == 0) backlight_test();
+    if(failures == 0) backlight_test_monochrome();
 }
 
 // This is an example of testing a 3.3V output from the board sent to A2.
@@ -326,7 +326,7 @@ void spiSendString(char* data)
   digitalWrite(CS_PIN, HIGH); //Release the CS pin to de-select Serial1
 }
 
-void backlight_test()
+void backlight_test_RGB()
 {
 
   //Serial1.begin(9600); //Begin communication with Serial1
@@ -364,5 +364,21 @@ void backlight_test()
   Serial1.write('|'); //Put LCD into setting mode
   Serial1.write(188 + 0); //Set blue backlight amount to 0%
   
+}
+
+void backlight_test_monochrome()
+{
+
+  //Serial1.begin(9600); //Begin communication with Serial1
+
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(128 + 29); //Set white/red backlight amount to 0%
+  delay(2000);
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(128 + 15); //Set white/red backlight amount to 51%
+  delay(2000);
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(128); //Set white/red backlight amount to 100%
+
 }
 
