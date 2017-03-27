@@ -178,7 +178,7 @@ void test()
 // This was originally used on the ESP32 dev board testbed.
 void test_VCC()
 {
-  Serial.println("testing 5V output on board VCC");
+  Serial.println("testing 3.3V output on board VCC");
 
   // THIS IS SPLIT WITH A PRETEST CIRCUIT
   // This means that we need to write the PT_CTRL pin LOW, in order to get a split "closer" to 50%.
@@ -189,13 +189,13 @@ void test_VCC()
   //correct_val = what we expect.
   //allowance_percent = allowed window for overage. 0.1 = 10%
   //debug = print debug statements
-  boolean result = FJ.verifyVoltage(A6, 2.4, 10, true); // 5V split by two 10Ks in the PT circuit, reads 486 on my 5V logic FJ (using a proto known good).
+  boolean result = FJ.verifyVoltage(A6, 1.6, 10, true); // 3.3V split by two 10Ks in the PT circuit
 
   if (result == true) 
     Serial.println("test success!");
   else
   {
-    Serial.println("test failure (should read near 2.4 V)");
+    Serial.println("test failure (should read near 1.6 V)");
     failures++;
   }
 }
