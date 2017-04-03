@@ -173,6 +173,7 @@ void test()
     I2C_test();
     if(failures == 0) SPI_test();
     if(failures == 0) backlight_test_RGB();
+    //contrast_test(); // just here temporarily to make sure this is working
 }
 
 // This is an example of testing a 3.3V output from the board sent to A2.
