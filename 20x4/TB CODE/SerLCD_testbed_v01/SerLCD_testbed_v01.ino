@@ -167,11 +167,12 @@ void loop()
 void test()
 {
     test_VCC();
+    
     set_contrast_via_serial();
     serial_test();
     I2C_test();
     if(failures == 0) SPI_test();
-    if(failures == 0) backlight_test_monochrome();
+    if(failures == 0) backlight_test_RGB();
 }
 
 // This is an example of testing a 3.3V output from the board sent to A2.
@@ -189,13 +190,13 @@ void test_VCC()
   //correct_val = what we expect.
   //allowance_percent = allowed window for overage. 0.1 = 10%
   //debug = print debug statements
-  boolean result = FJ.verifyVoltage(A6, 1.6, 10, true); // 3.3V split by two 10Ks in the PT circuit
+  boolean result = FJ.verifyVoltage(A6, 1.7, 10, true); // 3.3V split by two 10Ks in the PT circuit
 
   if (result == true) 
     Serial.println("test success!");
   else
   {
-    Serial.println("test failure (should read near 1.6 V)");
+    Serial.println("test failure (should read near 1.7 V)");
     failures++;
   }
 }
@@ -231,7 +232,7 @@ void power_down()
 void contrast_test()
 {
   byte contrast = 0; //Will roll over at 255
-//  Serial1.begin(9600);
+  Serial1.begin(9600);
 
   while(1)
   {
@@ -251,7 +252,7 @@ void contrast_test()
   
     contrast += 5;
   
-    delay(500); //Hang out for a bit
+    delay(2000); //Hang out for a bit
   }
   
 }
@@ -263,7 +264,7 @@ void set_contrast_via_serial()
   //Send contrast setting
   Serial1.write('|'); //Put LCD into setting mode
   Serial1.write(24); //Send contrast command (24 aka "ctrl-x")
-  Serial1.write(50); // "50" contrast setting (0-255) seems to look perfect on my test jig in my office.
+  Serial1.write(10); // "10" contrast setting (0-255) seems to look perfect on my test jig in my office.
   delay(500);
 }
 
