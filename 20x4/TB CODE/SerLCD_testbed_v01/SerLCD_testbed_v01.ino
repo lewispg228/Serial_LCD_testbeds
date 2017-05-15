@@ -38,7 +38,7 @@
 #define DISPLAY_ADDRESS1 0x72 //This is the default address of the Serial1
 
 #include <FlyingJalapeno.h>
-FlyingJalapeno FJ(STATUS_LED); //Blink status msgs on pin 13
+FlyingJalapeno FJ(STATUS_LED, 3.3); //Blink status msgs on pin 13
 
 #include <Wire.h>
 
