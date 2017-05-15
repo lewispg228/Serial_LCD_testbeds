@@ -102,7 +102,7 @@ void loop()
         FJ.setV2(true, 5); // note, this is connected to RAW source via jumper on FJ
 
         // supply 5V to programming lines swittcher IC. Note, this is the only portion of the tested using this power supply, so we can just leave it on 100% of the time.
-        FJ.setV1(true, 5); //Turn on power supply 1 to 5.0V
+        FJ.setV1(true, 3.3); //Turn on power supply 1 to 3.3V
         pinMode(PGM_SWITCH_EN, OUTPUT);
         digitalWrite(PGM_SWITCH_EN, HIGH); // enable switch for initial programming. We will want to disable this when we move to other testing.
 
