@@ -167,13 +167,15 @@ void loop()
 void test()
 {
     test_VCC();
-    
+    //contrast_test(); // just here temporarily to make sure this is working
     set_contrast_via_serial(10);
     serial_test();
     I2C_test();
     if(failures == 0) SPI_test();
-    if(failures == 0) backlight_test_R(500);
-    //contrast_test(); // just here temporarily to make sure this is working
+    if(failures == 0)
+    {
+      backlight_rgb_upfades(5000);
+    }
 }
 
 // This is an example of testing a 3.3V output from the board sent to A2.
@@ -245,7 +247,7 @@ void contrast_test()
     Serial1.print("Contrast: ");
     Serial1.print(contrast);
     
-    contrast += 5;
+    contrast += 1;
     delay(2000); //Hang out for a bit
   }
 }
@@ -377,38 +379,62 @@ void backlight_test_RGB(int delay_var)
   
 }
 
-void backlight_test_R(int delay_var)
+void backlight_rgb_upfades(int delay_var)
 {
-
+  int brightness[3] = {0,15,29};
   //Serial1.begin(9600); //Begin communication with Serial1
+
+  // ALL OFF
 
   Serial1.write('|'); //Put LCD into setting mode
   Serial1.write(158 + 0); //Set green backlight amount to 0%
-  delay(100);
+  delay(delay_var);
   Serial1.write('|'); //Put LCD into setting mode
   Serial1.write(188 + 0); //Set blue backlight amount to 0%
-  delay(100);
+  delay(delay_var);
   Serial1.write('|'); //Put LCD into setting mode
   Serial1.write(128); //Set white/red backlight amount to 0%
-  delay(100);
+  delay(delay_var);
 
-  for( int brightness = 0 ; brightness <= 29 ; brightness++)
-  {
-    ///////////////////////RED
-    Serial.print("brightness: "); // debug
-    Serial.println(brightness); // debug
-    
+  // RED UPFADE
+    for( int i = 0 ; i <= 2 ; i++)
+    {
+      Serial.print("brightness: "); // debug
+      Serial.println(brightness[i]); // debug
+      Serial1.write('|'); //Put LCD into setting mode
+      Serial1.write(128 + brightness[i]); //Set white/red backlight amount to 0%
+      delay(delay_var);
+    }
     Serial1.write('|'); //Put LCD into setting mode
-    Serial1.write(128 + brightness); //Set white/red backlight amount to 100%
-    delay(100);
-    Serial1.write('|'); //Put LCD into setting mode
-    Serial1.write(158 + brightness);
-    delay(100);
-    Serial1.write('|'); //Put LCD into setting mode
-    Serial1.write(188 + brightness);
-    delay(100);
-    delay(delay_var);
-  }
+    Serial1.write(128); //Set white/red backlight amount to 0%
+    delay(delay_var);    
+
+  // GREEN UPFADE
+  for( int i = 0 ; i <= 2 ; i++)
+    {
+      Serial.print("brightness: "); // debug
+      Serial.println(brightness[i]); // debug
+      Serial1.write('|'); //Put LCD into setting mode
+      Serial1.write(158 + brightness[i]); //Set green backlight amount to 0%
+      delay(delay_var);
+    }    
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(158 + 0); //Set green backlight amount to 0%
+  delay(delay_var);    
+
+  // BLUE UPFADE
+  for( int i = 0 ; i <= 2 ; i++)
+    {
+      ///////////////////////RED
+      Serial.print("brightness: "); // debug
+      Serial.println(brightness[i]); // debug
+      Serial1.write('|'); //Put LCD into setting mode
+      Serial1.write(188 + brightness[i]); //Set blue backlight amount to 0%
+      delay(delay_var);
+    }        
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(188 + 0); //Set blue backlight amount to 0%
+  delay(delay_var); 
 }
 
 void backlight_test_monochrome()
