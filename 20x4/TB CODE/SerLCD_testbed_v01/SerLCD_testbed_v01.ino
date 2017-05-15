@@ -168,11 +168,11 @@ void test()
 {
     test_VCC();
     
-    set_contrast_via_serial();
+    set_contrast_via_serial(10);
     serial_test();
     I2C_test();
     if(failures == 0) SPI_test();
-    if(failures == 0) backlight_test_RGB();
+    if(failures == 0) backlight_test_R(500);
     //contrast_test(); // just here temporarily to make sure this is working
 }
 
@@ -234,38 +234,30 @@ void contrast_test()
 {
   byte contrast = 0; //Will roll over at 255
   Serial1.begin(9600);
-
   while(1)
   {
     Serial.print("Contrast: ");
     Serial.println(contrast);
+    set_contrast_via_serial(contrast);
     
-    //Send contrast setting
-    Serial1.write('|'); //Put LCD into setting mode
-    Serial1.write(24); //Send contrast command
-    Serial1.write(contrast);
-    delay(10);
-  
     Serial1.write('|'); //Setting character
     Serial1.write('-'); //Clear display
     Serial1.print("Contrast: ");
     Serial1.print(contrast);
-  
+    
     contrast += 5;
-  
     delay(2000); //Hang out for a bit
   }
-  
 }
 
-void set_contrast_via_serial()
+void set_contrast_via_serial(int contrast)
 {
   Serial1.begin(9600);
   
   //Send contrast setting
   Serial1.write('|'); //Put LCD into setting mode
   Serial1.write(24); //Send contrast command (24 aka "ctrl-x")
-  Serial1.write(10); // "10" contrast setting (0-255) seems to look perfect on my test jig in my office.
+  Serial1.write(contrast); // "10" contrast setting (0-255) seems to look perfect on my test jig in my office.
   delay(500);
 }
 
@@ -333,7 +325,7 @@ void spiSendString(char* data)
   digitalWrite(CS_PIN, HIGH); //Release the CS pin to de-select Serial1
 }
 
-void backlight_test_RGB()
+void backlight_test_RGB(int delay_var)
 {
 
   //Serial1.begin(9600); //Begin communication with Serial1
@@ -353,24 +345,70 @@ void backlight_test_RGB()
   ///////////////////////RED
   Serial1.write('|'); //Put LCD into setting mode
   Serial1.write(128 + 29); //Set white/red backlight amount to 100%
-  delay(2000);
+  delay(delay_var);
   Serial1.write('|'); //Put LCD into setting mode
   Serial1.write(128); //Set white/red backlight amount to 0%
   
   ///////////////////////GREEN
   Serial1.write('|'); //Put LCD into setting mode
   Serial1.write(158 + 29); //Set green backlight amount to 100%
-  delay(2000);
+  delay(delay_var);
   Serial1.write('|'); //Put LCD into setting mode
   Serial1.write(158 + 0); //Set green backlight amount to 0%
 
   ///////////////////////BLUE
   Serial1.write('|'); //Put LCD into setting mode
   Serial1.write(188 + 29); //Set blue backlight amount to 100%
-  delay(2000);
+  delay(delay_var);
   Serial1.write('|'); //Put LCD into setting mode
   Serial1.write(188 + 0); //Set blue backlight amount to 0%
+
   
+  ///////////////////////WHITE
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(128 + 29); //Set white/red backlight amount to 100%  
+  Serial1.write(158 + 29); //Set green backlight amount to 100%  
+  Serial1.write(188 + 29); //Set blue backlight amount to 100%
+  delay(delay_var);
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(128); //Set white/red backlight amount to 0%  
+  Serial1.write(158 + 0); //Set green backlight amount to 0%  
+  Serial1.write(188 + 0); //Set blue backlight amount to 0%
+  
+}
+
+void backlight_test_R(int delay_var)
+{
+
+  //Serial1.begin(9600); //Begin communication with Serial1
+
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(158 + 0); //Set green backlight amount to 0%
+  delay(100);
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(188 + 0); //Set blue backlight amount to 0%
+  delay(100);
+  Serial1.write('|'); //Put LCD into setting mode
+  Serial1.write(128); //Set white/red backlight amount to 0%
+  delay(100);
+
+  for( int brightness = 0 ; brightness <= 29 ; brightness++)
+  {
+    ///////////////////////RED
+    Serial.print("brightness: "); // debug
+    Serial.println(brightness); // debug
+    
+    Serial1.write('|'); //Put LCD into setting mode
+    Serial1.write(128 + brightness); //Set white/red backlight amount to 100%
+    delay(100);
+    Serial1.write('|'); //Put LCD into setting mode
+    Serial1.write(158 + brightness);
+    delay(100);
+    Serial1.write('|'); //Put LCD into setting mode
+    Serial1.write(188 + brightness);
+    delay(100);
+    delay(delay_var);
+  }
 }
 
 void backlight_test_monochrome()
