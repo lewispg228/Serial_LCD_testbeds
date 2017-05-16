@@ -1,6 +1,6 @@
 /*
   SerLCD testbed code.
-  Flying Jalapeno (V1:5V,  V2: RAW (7V))
+  Flying Jalapeno (VCC (aka LOGIC): 3.3V, V1:3.3V,  V2: RAW (5-7V))
   2 capsense pads: Pretest & Power, TEST
 
   Select Mega2560 from the boards list
