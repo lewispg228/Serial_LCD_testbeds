@@ -35,6 +35,12 @@
 #define DTR_FJ 2
 #define CS_PIN 53
 
+// Display size. The same testbed code goes onto both versions of the testing hardware,
+// and the following two definitions change the messages sent during testing.
+// Define one of these two following variables as a "1" and the other as a "0".
+#define DISPLAY_SIZE_16X2 1
+#define DISPLAY_SIZE_20X4 0
+
 #define DISPLAY_ADDRESS1 0x72 //This is the default address of the Serial1
 
 #include <FlyingJalapeno.h>
@@ -167,14 +173,15 @@ void loop()
 void test()
 {
     test_VCC();
-    //contrast_test(); // just here temporarily to make sure this is working
+    //contrast_test(); // just here temporarily to make sure this is working      
     set_contrast_via_serial(10);
     serial_test();
+    backlight_test_loop();
     I2C_test();
     if(failures == 0) SPI_test();
     if(failures == 0)
     {
-      backlight_rgb_upfades(5000);
+      backlight_rgb_upfades(1000);
     }
 }
 
@@ -247,7 +254,7 @@ void contrast_test()
     Serial1.print("Contrast: ");
     Serial1.print(contrast);
     
-    contrast += 1;
+    contrast += 10;
     delay(2000); //Hang out for a bit
   }
 }
@@ -255,6 +262,12 @@ void contrast_test()
 void set_contrast_via_serial(int contrast)
 {
   Serial1.begin(9600);
+
+    // Note, this is only here because I can't get the RED or BLUE backlight to work right now, and I want to test com lines.
+    Serial.println("Green brightness: 29"); // debug
+    Serial1.write('|'); //Put LCD into setting mode
+    Serial1.write(158 + 29); //Set green backlight amount to 0%
+    delay(2000);
   
   //Send contrast setting
   Serial1.write('|'); //Put LCD into setting mode
@@ -267,7 +280,8 @@ void serial_test()
 {
   Serial1.write('|'); //Setting character
   Serial1.write('-'); //Clear display
-  Serial1.print("Serial              ");
+  if(DISPLAY_SIZE_20X4) Serial1.print("Serial              ");
+  else if(DISPLAY_SIZE_16X2) Serial1.print("Serial          "); // shorter amount of "spaces" - makes total length of characters 16
   delay(500);
 }
 
@@ -286,7 +300,8 @@ void I2C_test()
   if(ping_I2C() == true)
   {
     Wire.beginTransmission(DISPLAY_ADDRESS1); // transmit to device #1
-    Wire.print("I2C                 ");
+    if(DISPLAY_SIZE_20X4) Wire.print("I2C                 ");
+    else if(DISPLAY_SIZE_16X2) Wire.print("I2C          "); // shorter amount of "spaces" - makes total length of characters 13 - note, we need room for "SPI"
     Wire.endTransmission(); //Stop I2C transmission
   }
   else
@@ -313,7 +328,8 @@ void SPI_test()
   //digitalWrite(CS_PIN, HIGH); //Release the CS pin to de-select Serial1
 
   char tempString[50]; //Needs to be large enough to hold the entire string with up to 5 digits
-  sprintf(tempString, "SPI                 ");
+  if(DISPLAY_SIZE_20X4) sprintf(tempString, "SPI                 ");
+  else if(DISPLAY_SIZE_16X2) sprintf(tempString, "SPI"); // just fit in in the last 3 spots in the bottom row. The total row will display "I2C          SPI"
   spiSendString(tempString);
 
 }
@@ -451,5 +467,69 @@ void backlight_test_monochrome()
   Serial1.write('|'); //Put LCD into setting mode
   Serial1.write(128); //Set white/red backlight amount to 100%
 
+}
+
+// Note, this is only here because I can't get the RED or BLUE backlight to work right now, and I want to test com lines.
+void backlight_test_loop()
+{
+  int BL128 = 0;
+  int BL158 = 0;
+  int BL188 = 0;
+  
+  while(1)
+  {
+
+  
+  Serial1.begin(9600);
+  
+  if(Serial.available() > 0)
+  {
+    char input = Serial.read();
+    switch (input) 
+    {
+      case '1': 
+        BL128 -= 1;
+        Serial1.write('|'); //Put LCD into setting mode
+        Serial1.write(128 + BL128); //Set green backlight amount to 0%
+        delay(100);        
+        break;
+      case '4':
+        BL128 += 1;
+        Serial1.write('|'); //Put LCD into setting mode
+        Serial1.write(128 + BL128); //Set green backlight amount to 0%
+        delay(100);
+        break;
+      case '2': 
+        BL158 -= 1;
+        Serial1.write('|'); //Put LCD into setting mode
+        Serial1.write(158 + BL158); //Set green backlight amount to 0%
+        delay(100);        
+        break;
+      case '5':
+        BL158 += 1;
+        Serial1.write('|'); //Put LCD into setting mode
+        Serial1.write(158 + BL158); //Set green backlight amount to 0%
+        delay(100);        
+        break;
+      case '3': 
+        BL188 -= 1;
+        Serial1.write('|'); //Put LCD into setting mode
+        Serial1.write(188 + BL188); //Set green backlight amount to 0%   
+        delay(100);        
+        break;
+      case '6':
+        BL188 += 1;
+        Serial1.write('|'); //Put LCD into setting mode
+        Serial1.write(188 + BL188); //Set green backlight amount to 0%   
+        delay(100);        
+        break;
+    }
+
+    Serial.println(BL128);
+    Serial.println(BL158);
+    Serial.println(BL188);
+
+  }
+  }
 }
 
