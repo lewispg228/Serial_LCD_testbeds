@@ -176,12 +176,12 @@ void test()
     //contrast_test(); // just here temporarily to make sure this is working      
     set_contrast_via_serial(10);
     serial_test();
-    backlight_test_loop();
+    //backlight_test_loop();
     I2C_test();
     if(failures == 0) SPI_test();
     if(failures == 0)
     {
-      backlight_rgb_upfades(1000);
+      backlight_rgb_upfades(3000);
     }
 }
 
