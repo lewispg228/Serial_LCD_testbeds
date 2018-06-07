@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.5.0">
+<eagle version="7.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.001" altunitdist="inch" altunit="inch"/>
+<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="yes" active="yes"/>
@@ -217,26 +217,26 @@
 <circle x="2.54" y="33.02" radius="1.27" width="0.127" layer="49"/>
 <circle x="77.47" y="33.02" radius="1.27" width="0.127" layer="49"/>
 <circle x="77.47" y="2.54" radius="1.27" width="0.127" layer="49"/>
-<hole x="9.652" y="33.782" drill="1.524"/>
-<hole x="12.192" y="33.782" drill="1.524"/>
-<hole x="14.732" y="33.782" drill="1.524"/>
-<hole x="17.272" y="33.782" drill="1.524"/>
-<hole x="19.812" y="33.782" drill="1.524"/>
-<hole x="22.352" y="33.782" drill="1.524"/>
-<hole x="24.892" y="33.782" drill="1.524"/>
-<hole x="27.432" y="33.782" drill="1.524"/>
-<hole x="29.972" y="33.782" drill="1.524"/>
-<hole x="32.512" y="33.782" drill="1.524"/>
-<hole x="35.052" y="33.782" drill="1.524"/>
-<hole x="37.592" y="33.782" drill="1.524"/>
-<hole x="40.132" y="33.782" drill="1.524"/>
-<hole x="42.672" y="33.782" drill="1.524"/>
-<hole x="45.212" y="33.782" drill="1.524"/>
-<hole x="47.752" y="33.782" drill="1.524"/>
-<hole x="55.2958" y="33.782" drill="1.524"/>
-<hole x="57.3024" y="33.782" drill="1.524"/>
-<hole x="59.309" y="33.782" drill="1.524"/>
-<hole x="64.77" y="33.782" drill="1.524"/>
+<hole x="9.652" y="33.782" drill="1.397"/>
+<hole x="12.192" y="33.782" drill="1.397"/>
+<hole x="14.732" y="33.782" drill="1.397"/>
+<hole x="17.272" y="33.782" drill="1.397"/>
+<hole x="19.812" y="33.782" drill="1.397"/>
+<hole x="22.352" y="33.782" drill="1.397"/>
+<hole x="24.892" y="33.782" drill="1.397"/>
+<hole x="27.432" y="33.782" drill="1.397"/>
+<hole x="29.972" y="33.782" drill="1.397"/>
+<hole x="32.512" y="33.782" drill="1.397"/>
+<hole x="35.052" y="33.782" drill="1.397"/>
+<hole x="37.592" y="33.782" drill="1.397"/>
+<hole x="40.132" y="33.782" drill="1.397"/>
+<hole x="42.672" y="33.782" drill="1.397"/>
+<hole x="45.212" y="33.782" drill="1.397"/>
+<hole x="47.752" y="33.782" drill="1.397"/>
+<hole x="55.2958" y="33.782" drill="1.397"/>
+<hole x="57.3024" y="33.782" drill="1.397"/>
+<hole x="59.309" y="33.782" drill="1.397"/>
+<hole x="64.77" y="33.782" drill="1.397"/>
 </package>
 <package name="SRE_LCD_16X2_REF_ONLY">
 <wire x1="0" y1="0" x2="5.08" y2="0" width="0.127" layer="49"/>

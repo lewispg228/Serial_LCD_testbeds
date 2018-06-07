@@ -8,7 +8,7 @@
 </settings>
 <grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.005" altunitdist="inch" altunit="inch"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
 <layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
@@ -23,15 +23,15 @@
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
 <layer number="15" name="Route15" color="4" fill="6" visible="no" active="no"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
-<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
-<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
-<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="no" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="no" active="yes"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="16" fill="1" visible="yes" active="yes"/>
-<layer number="22" name="bPlace" color="14" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="16" fill="1" visible="no" active="yes"/>
+<layer number="22" name="bPlace" color="14" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
@@ -52,13 +52,13 @@
 <layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
-<layer number="49" name="Reference" color="13" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="13" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="yes"/>
-<layer number="51" name="tDocu" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="6" fill="1" visible="no" active="yes"/>
 <layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
@@ -185,9 +185,9 @@
 <wire x1="53.34" y1="15.24" x2="53.34" y2="85.09" width="0.2032" layer="20"/>
 <wire x1="53.34" y1="85.09" x2="52.07" y2="85.09" width="0.2032" layer="20"/>
 <wire x1="52.07" y1="85.09" x2="52.07" y2="90.17" width="0.2032" layer="20"/>
-<text x="30.48" y="60.96" size="3.81" layer="20" font="vector" ratio="15" rot="R45">ROUTE OUT</text>
-<text x="30.48" y="39.37" size="3.81" layer="20" font="vector" ratio="15" rot="R45">ROUTE OUT</text>
-<text x="30.48" y="15.24" size="3.81" layer="20" font="vector" ratio="15" rot="R45">ROUTE OUT</text>
+<text x="30.48" y="60.96" size="3.81" layer="21" font="vector" ratio="15" rot="R45">ROUTE OUT</text>
+<text x="30.48" y="39.37" size="3.81" layer="21" font="vector" ratio="15" rot="R45">ROUTE OUT</text>
+<text x="30.48" y="15.24" size="3.81" layer="21" font="vector" ratio="15" rot="R45">ROUTE OUT</text>
 </plain>
 <libraries>
 <library name="SparkFun">
@@ -279,26 +279,26 @@ This is the mechanical footprint for a #4 phillips button head screw. Use the ke
 <circle x="2.54" y="33.02" radius="1.27" width="0.127" layer="49"/>
 <circle x="77.47" y="33.02" radius="1.27" width="0.127" layer="49"/>
 <circle x="77.47" y="2.54" radius="1.27" width="0.127" layer="49"/>
-<hole x="9.652" y="33.782" drill="1.524"/>
-<hole x="12.192" y="33.782" drill="1.524"/>
-<hole x="14.732" y="33.782" drill="1.524"/>
-<hole x="17.272" y="33.782" drill="1.524"/>
-<hole x="19.812" y="33.782" drill="1.524"/>
-<hole x="22.352" y="33.782" drill="1.524"/>
-<hole x="24.892" y="33.782" drill="1.524"/>
-<hole x="27.432" y="33.782" drill="1.524"/>
-<hole x="29.972" y="33.782" drill="1.524"/>
-<hole x="32.512" y="33.782" drill="1.524"/>
-<hole x="35.052" y="33.782" drill="1.524"/>
-<hole x="37.592" y="33.782" drill="1.524"/>
-<hole x="40.132" y="33.782" drill="1.524"/>
-<hole x="42.672" y="33.782" drill="1.524"/>
-<hole x="45.212" y="33.782" drill="1.524"/>
-<hole x="47.752" y="33.782" drill="1.524"/>
-<hole x="55.2958" y="33.782" drill="1.524"/>
-<hole x="57.3024" y="33.782" drill="1.524"/>
-<hole x="59.309" y="33.782" drill="1.524"/>
-<hole x="64.77" y="33.782" drill="1.524"/>
+<hole x="9.652" y="33.782" drill="1.397"/>
+<hole x="12.192" y="33.782" drill="1.397"/>
+<hole x="14.732" y="33.782" drill="1.397"/>
+<hole x="17.272" y="33.782" drill="1.397"/>
+<hole x="19.812" y="33.782" drill="1.397"/>
+<hole x="22.352" y="33.782" drill="1.397"/>
+<hole x="24.892" y="33.782" drill="1.397"/>
+<hole x="27.432" y="33.782" drill="1.397"/>
+<hole x="29.972" y="33.782" drill="1.397"/>
+<hole x="32.512" y="33.782" drill="1.397"/>
+<hole x="35.052" y="33.782" drill="1.397"/>
+<hole x="37.592" y="33.782" drill="1.397"/>
+<hole x="40.132" y="33.782" drill="1.397"/>
+<hole x="42.672" y="33.782" drill="1.397"/>
+<hole x="45.212" y="33.782" drill="1.397"/>
+<hole x="47.752" y="33.782" drill="1.397"/>
+<hole x="55.2958" y="33.782" drill="1.397"/>
+<hole x="57.3024" y="33.782" drill="1.397"/>
+<hole x="59.309" y="33.782" drill="1.397"/>
+<hole x="64.77" y="33.782" drill="1.397"/>
 </package>
 </packages>
 </library>
@@ -513,7 +513,7 @@ These rules have been curated by SparkFuns DFM commitee. After doing much resear
 <element name="U$8" library="SparkFun" package="STAND-OFF-TIGHT" value="" x="69.85" y="3.81"/>
 <element name="U$6" library="Testing" package="GOLD_HINGE_PM" value="GOLD_HINDGEPM+PF" x="0" y="80.01"/>
 <element name="U$7" library="Testing" package="GOLD_HINGE_PM" value="GOLD_HINDGEPM+PF" x="0" y="0"/>
-<element name="U$1" library="SerLCD_dimensions" package="SER_LCD_16X2_PM" value="" x="57.15" y="10.16" rot="R90"/>
+<element name="U$2" library="SerLCD_dimensions" package="SER_LCD_16X2_PM" value="" x="57.15" y="10.16" rot="R90"/>
 </elements>
 <signals>
 </signals>
