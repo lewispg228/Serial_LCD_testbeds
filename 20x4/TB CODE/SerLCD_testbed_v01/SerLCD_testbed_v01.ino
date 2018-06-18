@@ -38,8 +38,8 @@
 // Display size. The same testbed code goes onto both versions of the testing hardware,
 // and the following two definitions change the messages sent during testing.
 // Define one of these two following variables as a "1" and the other as a "0".
-#define DISPLAY_SIZE_16X2 1
-#define DISPLAY_SIZE_20X4 0
+#define DISPLAY_SIZE_16X2 0
+#define DISPLAY_SIZE_20X4 1
 
 #define DISPLAY_ADDRESS1 0x72 //This is the default address of the Serial1
 
@@ -177,11 +177,14 @@ void test()
     set_contrast_via_serial(10);
     serial_test();
     //backlight_test_loop();
+    delay(200);
     I2C_test();
+    delay(200);
     if(failures == 0) SPI_test();
+    delay(200);
     if(failures == 0)
     {
-      backlight_rgb_upfades(3000);
+      backlight_rgb_upfades(500);
     }
 }
 
@@ -267,13 +270,13 @@ void set_contrast_via_serial(int contrast)
     Serial.println("Green brightness: 29"); // debug
     Serial1.write('|'); //Put LCD into setting mode
     Serial1.write(158 + 29); //Set green backlight amount to 0%
-    delay(2000);
+    delay(100);
   
   //Send contrast setting
   Serial1.write('|'); //Put LCD into setting mode
   Serial1.write(24); //Send contrast command (24 aka "ctrl-x")
   Serial1.write(contrast); // "10" contrast setting (0-255) seems to look perfect on my test jig in my office.
-  delay(500);
+  delay(100);
 }
 
 void serial_test()
@@ -282,7 +285,7 @@ void serial_test()
   Serial1.write('-'); //Clear display
   if(DISPLAY_SIZE_20X4) Serial1.print("Serial              ");
   else if(DISPLAY_SIZE_16X2) Serial1.print("Serial          "); // shorter amount of "spaces" - makes total length of characters 16
-  delay(500);
+  delay(100);
 }
 
 boolean ping_I2C()
