@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.2.2">
+<eagle version="9.5.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -2206,58 +2206,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </library>
 <library name="SerLCD_dimensions">
 <packages>
-<package name="SER_LCD_16X2">
-<wire x1="0" y1="0" x2="5.08" y2="0" width="0.127" layer="49"/>
-<wire x1="5.08" y1="0" x2="74.93" y2="0" width="0.127" layer="49"/>
-<wire x1="74.93" y1="0" x2="80.01" y2="0" width="0.127" layer="49"/>
-<wire x1="80.01" y1="0" x2="80.01" y2="5.08" width="0.127" layer="49"/>
-<wire x1="80.01" y1="5.08" x2="80.01" y2="30.48" width="0.127" layer="49"/>
-<wire x1="80.01" y1="30.48" x2="80.01" y2="35.56" width="0.127" layer="49"/>
-<wire x1="80.01" y1="35.56" x2="74.93" y2="35.56" width="0.127" layer="49"/>
-<wire x1="74.93" y1="35.56" x2="5.08" y2="35.56" width="0.127" layer="49"/>
-<wire x1="5.08" y1="35.56" x2="0" y2="35.56" width="0.127" layer="49"/>
-<wire x1="0" y1="35.56" x2="0" y2="30.48" width="0.127" layer="49"/>
-<pad name="P$1" x="9.652" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<pad name="P$2" x="12.192" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<pad name="P$3" x="14.732" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<pad name="P$4" x="17.272" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<pad name="P$5" x="19.812" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<pad name="P$6" x="22.352" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<pad name="P$7" x="24.892" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<pad name="P$8" x="27.432" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<pad name="P$9" x="29.972" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<pad name="P$10" x="32.512" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<pad name="P$11" x="35.052" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<pad name="P$12" x="37.592" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<pad name="P$13" x="40.132" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<pad name="P$14" x="42.672" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<pad name="P$15" x="45.212" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<pad name="P$16" x="47.752" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<pad name="P$17" x="55.2958" y="33.782" drill="1.1176" diameter="1.524" shape="offset" rot="R90"/>
-<pad name="P$18" x="57.3024" y="33.782" drill="1.1176" diameter="1.524" shape="offset" rot="R90"/>
-<pad name="P$19" x="59.309" y="33.782" drill="1.1176" diameter="1.524" shape="offset" rot="R90"/>
-<pad name="P$20" x="64.77" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<wire x1="0" y1="30.48" x2="0" y2="5.08" width="0.127" layer="49"/>
-<wire x1="0" y1="5.08" x2="0" y2="0" width="0.127" layer="49"/>
-<wire x1="5.08" y1="0" x2="5.08" y2="3.81" width="0.127" layer="49"/>
-<wire x1="5.08" y1="3.81" x2="5.08" y2="5.08" width="0.127" layer="49"/>
-<wire x1="5.08" y1="5.08" x2="0" y2="5.08" width="0.127" layer="49"/>
-<wire x1="5.08" y1="35.56" x2="5.08" y2="31.75" width="0.127" layer="49"/>
-<wire x1="5.08" y1="31.75" x2="5.08" y2="30.48" width="0.127" layer="49"/>
-<wire x1="5.08" y1="30.48" x2="0" y2="30.48" width="0.127" layer="49"/>
-<wire x1="80.01" y1="30.48" x2="74.93" y2="30.48" width="0.127" layer="49"/>
-<wire x1="74.93" y1="30.48" x2="74.93" y2="31.75" width="0.127" layer="49"/>
-<wire x1="74.93" y1="31.75" x2="74.93" y2="35.56" width="0.127" layer="49"/>
-<wire x1="80.01" y1="5.08" x2="74.93" y2="5.08" width="0.127" layer="49"/>
-<wire x1="74.93" y1="5.08" x2="74.93" y2="3.81" width="0.127" layer="49"/>
-<wire x1="74.93" y1="3.81" x2="74.93" y2="0" width="0.127" layer="49"/>
-<wire x1="74.93" y1="31.75" x2="5.08" y2="31.75" width="0.127" layer="49" style="shortdash"/>
-<wire x1="74.93" y1="3.81" x2="5.08" y2="3.81" width="0.127" layer="49" style="shortdash"/>
-<circle x="2.54" y="2.54" radius="1.27" width="0.127" layer="49"/>
-<circle x="2.54" y="33.02" radius="1.27" width="0.127" layer="49"/>
-<circle x="77.47" y="33.02" radius="1.27" width="0.127" layer="49"/>
-<circle x="77.47" y="2.54" radius="1.27" width="0.127" layer="49"/>
-</package>
 <package name="SER_LCD_20X4">
 <wire x1="0" y1="0" x2="5.08" y2="0" width="0.127" layer="49"/>
 <wire x1="5.08" y1="0" x2="92.71" y2="0" width="0.127" layer="49"/>
@@ -2285,10 +2233,10 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <pad name="P$14" x="42.926" y="57.404" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
 <pad name="P$15" x="45.466" y="57.404" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
 <pad name="P$16" x="48.006" y="57.404" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
-<pad name="P$17" x="71.0438" y="57.404" drill="1.1176" diameter="1.524" shape="offset" rot="R90"/>
-<pad name="P$18" x="73.0504" y="57.404" drill="1.1176" diameter="1.524" shape="offset" rot="R90"/>
-<pad name="P$19" x="75.057" y="57.404" drill="1.1176" diameter="1.524" shape="offset" rot="R90"/>
-<pad name="P$20" x="2.54" y="47.752" drill="1.1176" diameter="1.8796" shape="offset" rot="R180"/>
+<pad name="P$17" x="70.8152" y="57.404" drill="1.1176" diameter="1.524" shape="offset" rot="R90"/>
+<pad name="P$18" x="72.8152" y="57.404" drill="1.1176" diameter="1.524" shape="offset" rot="R90"/>
+<pad name="P$19" x="74.8152" y="57.404" drill="1.1176" diameter="1.524" shape="offset" rot="R90"/>
+<pad name="P$20" x="2.4892" y="47.8536" drill="1.1176" diameter="1.8796" shape="offset" rot="R180"/>
 <wire x1="0" y1="55.118" x2="0" y2="49.53" width="0.127" layer="49"/>
 <wire x1="0" y1="49.53" x2="0" y2="45.72" width="0.127" layer="49"/>
 <wire x1="0" y1="45.72" x2="0" y2="5.08" width="0.127" layer="49"/>
@@ -2320,6 +2268,67 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="3.81" y1="48.26" x2="3.81" y2="46.99" width="0.127" layer="49" style="shortdash"/>
 <wire x1="3.81" y1="46.99" x2="2.54" y2="45.72" width="0.127" layer="49" style="shortdash" curve="-90"/>
 <wire x1="2.54" y1="45.72" x2="0" y2="45.72" width="0.127" layer="49" style="shortdash"/>
+</package>
+<package name="SER_LCD_16X2">
+<wire x1="0" y1="0" x2="5.08" y2="0" width="0.127" layer="49"/>
+<wire x1="5.08" y1="0" x2="74.93" y2="0" width="0.127" layer="49"/>
+<wire x1="74.93" y1="0" x2="80.01" y2="0" width="0.127" layer="49"/>
+<wire x1="80.01" y1="0" x2="80.01" y2="5.08" width="0.127" layer="49"/>
+<wire x1="80.01" y1="5.08" x2="80.01" y2="30.48" width="0.127" layer="49"/>
+<wire x1="80.01" y1="30.48" x2="80.01" y2="35.56" width="0.127" layer="49"/>
+<wire x1="80.01" y1="35.56" x2="74.93" y2="35.56" width="0.127" layer="49"/>
+<wire x1="74.93" y1="35.56" x2="5.08" y2="35.56" width="0.127" layer="49"/>
+<wire x1="5.08" y1="35.56" x2="0" y2="35.56" width="0.127" layer="49"/>
+<wire x1="0" y1="35.56" x2="0" y2="30.48" width="0.127" layer="49"/>
+<pad name="P$1" x="9.652" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
+<pad name="P$2" x="12.192" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
+<pad name="P$3" x="14.732" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
+<pad name="P$4" x="17.272" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
+<pad name="P$5" x="19.812" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
+<pad name="P$6" x="22.352" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
+<pad name="P$7" x="24.892" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
+<pad name="P$8" x="27.432" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
+<pad name="P$9" x="29.972" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
+<pad name="P$10" x="32.512" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
+<pad name="P$11" x="35.052" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
+<pad name="P$12" x="37.592" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
+<pad name="P$13" x="40.132" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
+<pad name="P$14" x="42.672" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
+<pad name="P$15" x="45.212" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
+<pad name="P$16" x="47.752" y="33.782" drill="1.1176" diameter="1.8796" shape="offset" rot="R90"/>
+<pad name="P$17" x="60.1416" y="33.782" drill="1.1176" diameter="1.524" shape="offset" rot="R90"/>
+<pad name="P$18" x="62.1416" y="33.782" drill="1.1176" diameter="1.524" shape="offset" rot="R90"/>
+<pad name="P$19" x="64.1416" y="33.782" drill="1.1176" diameter="1.524" shape="offset" rot="R90"/>
+<pad name="P$20" x="66.1416" y="33.782" drill="1.1176" diameter="1.524" shape="offset" rot="R90"/>
+<wire x1="0" y1="30.48" x2="0" y2="5.08" width="0.127" layer="49"/>
+<wire x1="0" y1="5.08" x2="0" y2="0" width="0.127" layer="49"/>
+<wire x1="5.08" y1="0" x2="5.08" y2="3.81" width="0.127" layer="49"/>
+<wire x1="5.08" y1="3.81" x2="5.08" y2="5.08" width="0.127" layer="49"/>
+<wire x1="5.08" y1="5.08" x2="0" y2="5.08" width="0.127" layer="49"/>
+<wire x1="5.08" y1="35.56" x2="5.08" y2="31.75" width="0.127" layer="49"/>
+<wire x1="5.08" y1="31.75" x2="5.08" y2="30.48" width="0.127" layer="49"/>
+<wire x1="5.08" y1="30.48" x2="0" y2="30.48" width="0.127" layer="49"/>
+<wire x1="80.01" y1="30.48" x2="74.93" y2="30.48" width="0.127" layer="49"/>
+<wire x1="74.93" y1="30.48" x2="74.93" y2="31.75" width="0.127" layer="49"/>
+<wire x1="74.93" y1="31.75" x2="74.93" y2="35.56" width="0.127" layer="49"/>
+<wire x1="80.01" y1="5.08" x2="74.93" y2="5.08" width="0.127" layer="49"/>
+<wire x1="74.93" y1="5.08" x2="74.93" y2="3.81" width="0.127" layer="49"/>
+<wire x1="74.93" y1="3.81" x2="74.93" y2="0" width="0.127" layer="49"/>
+<wire x1="74.93" y1="31.75" x2="5.08" y2="31.75" width="0.127" layer="49" style="shortdash"/>
+<wire x1="74.93" y1="3.81" x2="5.08" y2="3.81" width="0.127" layer="49" style="shortdash"/>
+<circle x="2.54" y="2.54" radius="1.27" width="0.127" layer="49"/>
+<circle x="2.54" y="33.02" radius="1.27" width="0.127" layer="49"/>
+<circle x="77.47" y="33.02" radius="1.27" width="0.127" layer="49"/>
+<circle x="77.47" y="2.54" radius="1.27" width="0.127" layer="49"/>
+<wire x1="58.039" y1="34.671" x2="58.039" y2="26.1112" width="0.1524" layer="49"/>
+<wire x1="58.039" y1="26.1112" x2="53.5686" y2="26.1112" width="0.1524" layer="49"/>
+<wire x1="53.5686" y1="26.1112" x2="53.5686" y2="34.671" width="0.1524" layer="49"/>
+<wire x1="53.5686" y1="34.671" x2="58.039" y2="34.671" width="0.1524" layer="49"/>
+<wire x1="53.5178" y1="32.3596" x2="52.4256" y2="32.3596" width="0.1524" layer="49"/>
+<wire x1="53.5432" y1="28.6004" x2="52.451" y2="28.6004" width="0.1524" layer="49"/>
+<wire x1="53.594" y1="29.8958" x2="52.5018" y2="29.8958" width="0.1524" layer="49"/>
+<wire x1="53.5432" y1="31.115" x2="52.451" y2="31.115" width="0.1524" layer="49"/>
+<text x="54.864" y="27.9146" size="1.016" layer="49" font="vector" rot="R45">QWIIC</text>
 </package>
 </packages>
 <symbols>
@@ -3437,10 +3446,6 @@ is outputing correct 3.3V</text>
 <pinref part="J3" gate="G$1" pin="GND@2"/>
 <wire x1="177.8" y1="50.8" x2="175.26" y2="50.8" width="0.1524" layer="91"/>
 <junction x="175.26" y="50.8"/>
-<pinref part="J3" gate="G$1" pin="GND@18"/>
-<wire x1="177.8" y1="93.98" x2="175.26" y2="93.98" width="0.1524" layer="91"/>
-<wire x1="175.26" y1="93.98" x2="175.26" y2="86.36" width="0.1524" layer="91"/>
-<junction x="175.26" y="86.36"/>
 <pinref part="GND5" gate="1" pin="GND"/>
 </segment>
 <segment>
@@ -3614,14 +3619,9 @@ is outputing correct 3.3V</text>
 <label x="33.02" y="157.48" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="J3" gate="G$1" pin="5-12V"/>
-<wire x1="177.8" y1="91.44" x2="172.72" y2="91.44" width="0.1524" layer="91"/>
-<label x="170.18" y="91.44" size="1.27" layer="95" rot="R180" xref="yes"/>
+<label x="172.72" y="83.82" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="J3" gate="G$1" pin="RAW"/>
-<wire x1="172.72" y1="91.44" x2="170.18" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="83.82" x2="172.72" y2="83.82" width="0.1524" layer="91"/>
-<wire x1="172.72" y1="83.82" x2="172.72" y2="91.44" width="0.1524" layer="91"/>
-<junction x="172.72" y="91.44"/>
 </segment>
 </net>
 <net name="MISO" class="0">
